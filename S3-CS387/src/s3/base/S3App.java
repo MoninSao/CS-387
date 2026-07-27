@@ -70,7 +70,7 @@ public class S3App extends Canvas {
     private boolean gameRunning = true;
     public static final int SCREEN_X = 1024;
     public static final int SCREEN_Y = 720;
-    public static int REDRAWING_PERIOD = 1;
+    public static int REDRAWING_PERIOD = 20;
     public static int MAX_FRAMESKIP = 1000;
     public static final int m_trace_interval = 500;
     public static final int STATE_INIT = 0;
@@ -149,8 +149,8 @@ public class S3App extends Canvas {
                     time = actTime;
                 }
             } /*
-             * if
-             */
+               * if
+               */
 
             /*
              * Redraw
@@ -160,8 +160,8 @@ public class S3App extends Canvas {
 
                 draw();
             } /*
-             * if
-             */
+               * if
+               */
 
             try {
                 Thread.sleep(1);
@@ -193,12 +193,12 @@ public class S3App extends Canvas {
     public S3App(String map, int traceInterval, List<PlayerInput> players,
             gatech.mmpm.tracer.ITracer a_tracer) throws Exception {
 
-//        try {
-//            idomain = new s3.mmpm.S3Domain();
-//            d2.core.Config.setDomain(idomain);
-//        } catch (gatech.mmpm.ConfigurationException e1) {
-//            e1.printStackTrace();
-//        }
+        // try {
+        // idomain = new s3.mmpm.S3Domain();
+        // d2.core.Config.setDomain(idomain);
+        // } catch (gatech.mmpm.ConfigurationException e1) {
+        // e1.printStackTrace();
+        // }
         tracer = a_tracer;
 
         try {
@@ -581,7 +581,7 @@ public class S3App extends Canvas {
                         }
                     }
                 }
-                break;
+                    break;
             }
         } // while
 
@@ -653,8 +653,9 @@ public class S3App extends Canvas {
             // get selected units
             for (int i = map_x_start < map_x_end ? map_x_start : map_x_end; i < (map_x_start > map_x_end ? map_x_start
                     : map_x_end) + 1; i++) {
-                for (int j = map_y_start < map_y_end ? map_y_start : map_y_end; j < (map_y_start > map_y_end ? map_y_start
-                        : map_y_end) + 1; j++) {
+                for (int j = map_y_start < map_y_end ? map_y_start
+                        : map_y_end; j < (map_y_start > map_y_end ? map_y_start
+                                : map_y_end) + 1; j++) {
                     WUnit unit = m_game.entityAt(i, j);
                     if (null != unit) {
                         selectedEntities.add(unit);
@@ -759,7 +760,7 @@ public class S3App extends Canvas {
                                 selectedAction = null;
                                 theHUD.resetButtons();
                                 return;
-                            } else {                                
+                            } else {
                                 for (WUnit unit : selectedEntities) {
                                     selectedAction = new S3Action(unit.entityID,
                                             S3Action.ACTION_HARVEST, e.getX(), e.getY());
@@ -769,7 +770,7 @@ public class S3App extends Canvas {
                                 theHUD.resetButtons();
                                 return;
                             }
-                        } 
+                        }
                     }
 
                     // if selected wtroop, and click on enemy -> attack
